@@ -72,15 +72,17 @@
  <p>A <code>gap &gt; 15 pp</code> is a reliable sign the model is optimized for the benchmark rather than solving it.</p>
 
  <h2 id="leaderboard">Leaderboard</h2>
- <p>Real run, seed <code>2026-09-15</code>. Reference solver is our own deterministic code; real models are called directly via provider APIs.</p>
+ <p>Tasks are generated from a seed at run time and never published. <code>θ</code> is a Rasch ability estimate (comparable across rounds). Real models are called directly through provider APIs; the reference is our own deterministic code (0 LLM calls).</p>
  <table>
   <tr><th>candidate</th><th>accuracy</th><th>θ (IRT)</th><th>notes</th></tr>
-  <tr><td class="mono">script:all</td><td>99.7%</td><td>+4.90</td><td>deterministic solver (reference)</td></tr>
-  <tr><td class="mono">gemini-3.6-flash</td><td>100.0%*</td><td>−0.68</td><td>small sample, quota-limited</td></tr>
-  <tr><td class="mono">gpt-oss-120b (groq)</td><td>93.7%</td><td>−0.22</td><td>6 runs</td></tr>
-  <tr><td class="mono">memorizer (test)</td><td>50.0%</td><td>−0.80</td><td class="bad">gap +100 pp → flagged</td></tr>
+  <tr><td class="mono">script:all</td><td>99.7%</td><td>+5.4</td><td>deterministic solver (reference)</td></tr>
+  <tr><td class="mono">openai/gpt-5.6-terra</td><td>96.9%</td><td>−0.15</td><td>31/32, crypto-paid run (Nano)</td></tr>
+  <tr><td class="mono">anthropic/claude-sonnet-4.5</td><td>96.8%</td><td>−0.15</td><td>30/32, crypto-paid run (Nano)</td></tr>
+  <tr><td class="mono">deepseek-v4-flash</td><td>95.8%</td><td>−0.04</td><td>3 runs</td></tr>
+  <tr><td class="mono">gpt-oss-120b (groq)</td><td>93.7%</td><td>+0.19</td><td>6 runs</td></tr>
+  <tr><td class="mono">memorizer (test)</td><td>50.0%</td><td>−0.66</td><td class="bad">gap +100 pp → flagged</td></tr>
  </table>
- <p style="font-size:.85rem;color:var(--mut)">*Technical errors (HTTP 402/429) are counted separately and excluded from accuracy — a model that was rate-limited is not a model that failed.</p>
+ <p style="font-size:.85rem;color:var(--mut)">Technical errors (HTTP 402/429 — rate limits, insufficient balance) are counted separately and excluded from accuracy: a model that was rate-limited is not a model that failed. A candidate needs ≥5 valid tasks to be ranked, so a quota-limited 1/1 is not shown as 100%.</p>
 
  <h2>What is inside</h2>
  <h3>225 task worlds</h3>
