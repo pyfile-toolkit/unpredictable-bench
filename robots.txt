@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pyfile-toolkit.github.io/unpredictable-bench/sitemap.xml
