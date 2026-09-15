@@ -34,23 +34,41 @@ A task depends on the seed, and a solver must solve it for any seed. So tasks fr
 - **Three checker kinds:** formal (compare to reference), differential (answer is code, executed on random inputs against a reference), and open (no reference — routed to human A/B voting).
 - **IRT calibration:** a Rasch model yields a candidate θ comparable across rounds even when task sets differ.
 
+## Leaderboard (crypto-paid runs)
+
+Tasks are generated from a seed at run time, so every candidate sees a fresh set. Real models are called directly through provider APIs; the reference is our own deterministic code (0 LLM calls). Runs below were paid for with Nano through NanoGPT, no KYC.
+
+| candidate | accuracy | θ (IRT) | notes |
+|---|---|---|---|
+| `script:all` | 99.7% | +5.4 | deterministic solver (reference) |
+| `openai/gpt-5.6-terra` | 96.9% | −0.15 | 31/32 |
+| `anthropic/claude-sonnet-4.5` | 96.8% | −0.15 | 30/32 |
+| `deepseek-v4-flash` | 95.8% | −0.04 | 3 runs |
+| `gpt-oss-120b` (groq) | 93.7% | +0.19 | 6 runs |
+| `memorizer` (test) | 50.0% | −0.66 | gap +100 pp → flagged |
+
+Technical errors (HTTP 402/429) are counted separately and excluded from accuracy: a rate-limited model is not a failed model. A candidate needs ≥5 valid tasks to be ranked.
+
 ## Run it
 
 ```bash
 # reference solver (our own deterministic code, 0 LLM calls)
-node scripts/bench/run.mjs --candidate=script:all
+node projects/benchmark/code/run.mjs --candidate=script:all
 
 # a real model via a provider API (direct, not through any proxy)
-node scripts/bench/run.mjs --seed=myrun --candidates=direct:groq:openai/gpt-oss-120b
+node projects/benchmark/code/run.mjs --seed=myrun --candidates=direct:groq:openai/gpt-oss-120b
+
+# or pay with crypto (Nano) via NanoGPT — no KYC
+node projects/benchmark/code/run.mjs --candidates=direct:nanogpt:openai/gpt-5.6-terra
 
 # framework self-tests
-node scripts/bench/test.mjs
+node projects/benchmark/code/test.mjs
 ```
 
 Specs: `script:*` (code solver), `llm:*` (freellmapi), `direct:provider:model` (provider API), `interactive:stdin|file`, `self`.
 
 ## Status
 
-Early. The framework, 225 worlds, IRT calibration, contamination metric and human-voting pipeline are implemented and tested (23 meta-tests pass). Real-model runs are quota-limited; contributions of provider keys for independent runs are welcome.
+Early. The framework, 225 worlds, IRT calibration, contamination metric and human-voting pipeline are implemented and tested (23 meta-tests pass). Real-model runs are paid for with crypto (Nano via NanoGPT, no KYC); contributions of provider keys for independent runs are welcome.
 
 MIT.
