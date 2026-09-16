@@ -1,0 +1,37 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Report card: direct:nanogpt:deepseek-v4-flash</title>
+<style>
+ body{font-family:system-ui,sans-serif;max-width:820px;margin:2rem auto;padding:0 1rem;background:#0f1115;color:#e8e8ea}
+ h1{font-size:1.4rem} h2{font-size:1.05rem;margin-top:1.6rem}
+ .c{font-family:ui-monospace,monospace;color:#9fd0ff}
+ .kpi{display:flex;gap:1.2rem;flex-wrap:wrap;margin:1rem 0}
+ .kpi div{background:#161a20;padding:.7rem 1rem;border-radius:8px;border-left:3px solid #3b82f6}
+ .kpi b{display:block;font-size:1.3rem}
+ .good{color:#6ee7a0} .warn{color:#f0c674} .bad{color:#f28b82}
+ table{border-collapse:collapse;width:100%;margin:.6rem 0;font-size:.9rem}
+ th,td{text-align:left;padding:.4rem .6rem;border-bottom:1px solid #2a2d34}
+ th{color:#9aa0a6;font-weight:normal;font-size:.78rem;text-transform:uppercase}
+ .note{color:#9aa0a6;font-size:.82rem;background:#161a20;padding:.6rem;border-radius:8px;border-left:3px solid #3b82f6}
+</style></head><body>
+<h1>Report card: <span class="c">direct:nanogpt:deepseek-v4-flash</span></h1>
+<div class="kpi">
+ <div>Точность<b>95.8%</b></div>
+ <div>θ (IRT)<b>-0.04</b></div>
+ <div>Contamination gap<b class="">—</b></div>
+ <div>Прогонов<b>3</b></div>
+</div>
+<p class="note"><b>Вердикт:</b> ✅ решает (не натаскан)<br>
+Задачи генерируются из seed в момент прогона и не публикуются — натаскаться невозможно. gap &gt; 15 п.п. = кандидат лучше на уже виденных задачах (признак запоминания).</p>
+<h2>По мирам (слабые первыми)</h2>
+<table><tr><th>мир</th><th>точность</th><th>счёт</th></tr>
+<tr><td class="c">dfa</td><td>75.0%</td><td>6/8</td></tr>
+<tr><td class="c">perm</td><td>100.0%</td><td>8/8</td></tr>
+<tr><td class="c">calendars</td><td>100.0%</td><td>8/8</td></tr>
+<tr><td class="c">units</td><td>100.0%</td><td>8/8</td></tr>
+<tr><td class="c">bases</td><td>100.0%</td><td>4/4</td></tr>
+<tr><td class="c">logic</td><td>100.0%</td><td>4/4</td></tr>
+<tr><td class="c">sets</td><td>100.0%</td><td>4/4</td></tr>
+<tr><td class="c">strings</td><td>100.0%</td><td>4/4</td></tr>
+</table>
+<p class="note">Сгенерировано 2026-09-16 08:32 UTC · unpredictable-bench</p>
+</body></html>
