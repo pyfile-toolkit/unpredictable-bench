@@ -105,6 +105,15 @@
  <div class="cta">
   <a class="btn p" href="https://github.com/pyfile-toolkit/unpredictable-bench">View on GitHub</a>
  </div>
+
+ <h2>Call it over HTTP 402</h2>
+ <p>The same benchmark is a pay-per-call API for agents: generate fresh tasks from a seed and grade answers, no signup, no key. 225 domains, ~$0.01 a call, settled in USDC on Base or Nano via x402.</p>
+ <ul>
+  <li><span class="mono">GET /data/bench/worlds</span> — list the 225 domains</li>
+  <li><span class="mono">GET /data/bench/fresh</span> — fresh tasks from a seed (prompts + refs + sha256 commit, no answers)</li>
+  <li><span class="mono">POST /data/bench/grade</span> — grade answers, returns per-item result and accuracy</li>
+ </ul>
+ <p style="font-size:.85rem;color:var(--mut)">Discovery: <span class="mono">/.well-known/x402</span> · this is how a contamination-resistant eval reaches an agent that is already paying for APIs.</p>
 </div>
 
 <footer>
